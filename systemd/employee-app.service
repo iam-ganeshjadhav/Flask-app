@@ -1,0 +1,13 @@
+[Unit]
+Description=Employee Flask App
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/employee-app
+Environment=PATH=/home/ubuntu/venv/bin
+ExecStart=/home/ubuntu/venv/bin/gunicorn -w 3 -b 0.0.0.0:8000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
